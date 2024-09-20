@@ -1,0 +1,51 @@
+{
+    "id": 1,
+    "name": "Topic 1",
+    "nodetype": "topic",
+    "children": [
+        {
+            "id": 2,
+            "name": "Topic 2",
+            "nodetype": "topic",
+            "children": [
+                {
+                    "id": 3,
+                    "name": "Topic 3 ",
+                    "nodetype": "topic",
+                    "children": [
+                        {
+                            "nodeType": "file",
+                            "name": "File 3",
+                            "type": "html",
+                            "reference": "file1.html"
+                        },
+                        {
+                            "nodeType": "file",
+                            "name": "File 4",
+                            "type": "html",
+                            "reference": "file2.html"
+                        }
+                    ]
+                },
+                {
+                    "id": 4,
+                    "nodetype": "topic",
+                    "name": "Topic 4 ",
+                    "children": []
+                },
+                {
+                    "nodeType": "file",
+                    "name": "File 1",
+                    "type": "html",
+                    "reference": "file1.html"
+                },
+                {
+                    "nodeType": "file",
+                    "name": "File 2",
+                    "type": "html",
+                    "reference": "file2.html"
+                }
+            ]
+        }
+    ]
+}
