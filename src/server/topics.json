@@ -17,13 +17,13 @@
                             "nodeType": "file",
                             "name": "File 3",
                             "type": "html",
-                            "reference": "file1.html"
+                            "reference": "file3.html"
                         },
                         {
                             "nodeType": "file",
                             "name": "File 4",
                             "type": "html",
-                            "reference": "file2.html"
+                            "reference": "file4.html"
                         }
                     ]
                 },

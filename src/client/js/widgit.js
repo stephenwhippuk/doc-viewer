@@ -29,25 +29,32 @@ class Widget {
     render(){
         const header = document.createElement('div');
         header.classList.add('header');
-        var heading = document.createElement('h1');
-        heading.innerHTML = this.name;
-        header.innerHTML = heading.outerHTML;
+
+        let title = document.createElement('h1');
+        title.classList.add('widget-title');
+        title.innerText = this.name;
+        header.appendChild(title);
 
         let contentDiv = document.createElement('div');
         contentDiv.classList.add('widget-content');
 
         // add expand all button
-        this.actionButtons.forEach(button => {
-            const actionButton = document.createElement('span');
-            let classList = button.classList.split(' ');
-            classList.forEach(cls => actionButton.classList.add(cls));
-            actionButton.title = button.name;
-            actionButton.addEventListener('click', function(){
-                let evt = new CustomEvent(button.action, {detail : ""});
-                contentDiv.dispatchEvent(evt);
-            });
-            header.appendChild(actionButton);
-        });    
+        if(this.actionButtons.length > 0){
+            let buttonsDiv = document.createElement('div');
+            buttonsDiv.classList.add('widget-actions');
+            this.actionButtons.forEach(button => {
+                const actionButton = document.createElement('span');
+                let classList = button.classList.split(' ');
+                classList.forEach(cls => actionButton.classList.add(cls));
+                actionButton.title = button.name;
+                actionButton.addEventListener('click', function(){
+                    let evt = new CustomEvent(button.action, {detail : ""});
+                    contentDiv.dispatchEvent(evt);
+                });
+                buttonsDiv.appendChild(actionButton);
+            });    
+            header.appendChild(buttonsDiv);
+        }
         this.element.appendChild(header);
 
         this.element.appendChild(contentDiv);

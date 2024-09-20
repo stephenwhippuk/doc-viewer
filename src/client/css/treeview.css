@@ -30,10 +30,15 @@
 .treeview .header{
     width: 100%;
     display: grid;
-    grid-template-columns: 1fr 30px 30px;
+    grid-template-columns: 1fr 60px;
     border-bottom: 1px solid #444444;
     padding: 5px 0;
     margin-bottom: 10px;
+}
+
+.treeview .widget-actions{
+    display: flex;
+    justify-content: flex-end;
 }
 
 .treeview .header h1{
