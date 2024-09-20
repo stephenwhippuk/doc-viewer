@@ -1,22 +1,78 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document Viewer</title>
+    <title>Doc Viewer Mock</title>
+    <link rel="stylesheet" type="text/css" href="css/doc-viewer.css">
+    <link rel="stylesheet" type="text/css" href="css/treeview.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
     <header>
-        <h1>Document Viewer</h1>
+        
+        <h1><span class="app-icon fa fa-th-large" ></span>Document Viewer</h1>
+        <div class="top-actions">
+            <!-- search box-->
+            <div class="icon-edit">
+                <span class="fa fa-search"></span>
+                <input type="text" id="search" placeholder="Search...">
+            </div>
+          
+            <button id="refresh" title="Refresh"><i class="fa fa-refresh"></i></button>
+            <button id="print" title="Print"><i class="fa fa-print"></i></button>
+        </div>
     </header>
     <main>
-        <section id="document-section">
-            <!-- Document content will be loaded here -->
-        </section>
+     <nav class="treeview" id="treeview" data-indent="10" data-spacing="5px"></nav>
+    <div id="doc-space1" class="content-panel">
     </main>
     <footer>
-        <p>&copy; 2023 Document Viewer</p>
+        <p>&copy; 2024 Document Viewer</p>
     </footer>
-    <script src="scripts.js"></script>
+    <script src="js/events.js"></script>
+    <script src="js/widgit.js"></script>
+    <script src="js/treeview.js"></script>
+    <script src="js/docspace.js"></script>
+    <script>
+        var treeView = null;
+        var widgit = null;
+
+        window.onload = function(){
+            let parent = document.getElementById("treeview")
+            let dispatcher = new EventDispatcher();
+           
+            fetch('api/topics')
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                let mappedData = createTreeViewNodeFromData(data);
+
+                widgit = new Widget(parent, "Topics", [
+                    new ActionButton('Expand All', 'expand-all fa fa-chevron-circle-down', 'expand-all'), 
+                    new ActionButton('Collapse All', 'collapse-all fa fa-chevron-circle-up', 'collapse-all')
+                ]);
+                treeView = new TreeView("Topics", widgit.contentElement, mappedData, dispatcher);
+                widgit.addContentObject(treeView);
+                
+                let docSpaceDiv = document.getElementById("doc-space1")
+                let docSpace = new DocSpace(docSpaceDiv);
+
+                dispatcher.registerEvent('content-selected', docSpaceDiv, (eventName, detail)=>{
+                    return ['load-content', detail];
+                });
+
+            });     
+        }
+
+        // we'll make this reusable in a bit
+        function createTreeViewNodeFromData(data){
+            if(data.nodetype === 'topic'){
+                let children = data.children.map(createTreeViewNodeFromData);
+                return new Folder(data.name, children);
+            }else{
+                return new FolderContent(data.name, data.type, data.reference);
+            }
+        }
+
+    </script>
 </body>
 </html>
