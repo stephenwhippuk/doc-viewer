@@ -22,6 +22,7 @@ app.get('/api/topics', (req, res) => {
 })
 
 app.get('/api/loadContent/:contentUri', (req, res) => {
+    console.log(req.params.contentUri);
     res.sendFile(req.params.contentUri, {root: './src/client/content'});
 });
 

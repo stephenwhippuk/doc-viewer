@@ -1,0 +1,62 @@
+.treeview{
+    width: 100%;
+}
+
+.treeview .folder,.content{
+    cursor: pointer;
+}
+
+.treeview .folder .content-icon{
+    color: blue;
+    margin-right: 5px;
+}
+
+.treeview .folder .caret{
+    font-weight: bold;
+    margin-left: 5px;
+}
+
+.treeview .content .content-icon{
+    color: green;
+    margin-right: 5px;
+}
+
+.treeview .folder.muted{
+    color: gray;
+    cursor:default;
+}
+
+
+.treeview .header{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 30px 30px;
+    border-bottom: 1px solid #444444;
+    padding: 5px 0;
+    margin-bottom: 10px;
+}
+
+.treeview .header h1{
+    margin: 0;
+    font-size: 1.2em;
+}
+
+.treeview .expand-all{
+    cursor: pointer;
+    vertical-align: middle;
+    text-align: center;
+    font-weight: bold;
+    margin-right:5px;
+    font-size: 1.2em;
+    color: blue
+}
+
+.treeview .collapse-all{
+    cursor: pointer;
+    text-align: center;
+    vertical-align: middle;
+    margin-right:5px;
+    font-weight: bold;
+    font-size: 1.2em;
+    color: blue;
+}

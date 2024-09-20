@@ -1,0 +1,80 @@
+body{
+    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    height: 100vh;
+}
+
+header {
+    background-color: #1f0261;
+    color: white;
+    display: grid;
+    grid-template-columns: 1fr 100px;
+    padding-right: 0.5em;;
+    padding-left: 0.5em;
+}
+
+header h1{
+    font-size: 1.5em;
+}
+
+.app-icon{
+    color:#07a042;
+    margin-right: 0.5em;
+}
+
+
+header .top-actions{
+    padding-top: 1em;
+    padding-bottom: 1em;
+    display: flex;
+    justify-content: flex-end;
+}
+
+header .top-actions button {
+    background-color: #d1d1d1;
+    color: black;
+    border: none;
+    padding: 0.5em 1em;
+    margin-left: 0.5em;
+    cursor: pointer;
+}
+
+main {
+    padding: 1em;
+    overflow-y: auto;
+    display: grid;
+    grid-template-columns: 300px 1fr;
+}
+
+main nav {
+    overflow: auto;
+}
+
+.content-panel {
+    background-color: white;
+    padding: 1em;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    overflow-y: auto;
+}
+
+footer {
+    background-color: #1f0261;
+    color: white;
+    text-align: right;
+    padding-right:0.5em;
+}
+
+.icon-edit{
+    display: inline-flex
+}
+
+.icon-edit span{
+    padding-right: 0.5em;
+    padding-left: 0.5em;
+    padding-top:0.3em;
+    background-color: #d1d1d1;
+    color: black;
+}

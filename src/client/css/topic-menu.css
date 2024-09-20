@@ -1,0 +1,22 @@
+.topic-menu{
+    display: flex;
+    width:100%
+}
+
+.topic span:first-child{
+    color: blue;
+}
+
+.topic{
+    padding-top: 0.5em;
+    width:100%;
+    cursor: pointer;
+}
+
+.article{
+    padding-top: 0.5em;
+}
+
+.article span:first-child{
+    color:brown
+}
