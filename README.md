@@ -2,6 +2,6 @@
 
 A Web app written in Vanilla JS and CSS. hosted in a node server 
 
-to run it clone the repository and then run the command (in the src folder)
+to run it clone the repository and then run the command (in the root folder)
 
 > npm run serve 
