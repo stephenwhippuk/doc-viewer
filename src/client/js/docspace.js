@@ -3,7 +3,8 @@
 class DocSpace {
     constructor(element) {
         this.element = element;
-        this.content = null;        
+        this.content = null;    
+        this.displayType = ''    
         element.addEventListener('load-content', (event) => {
             this.loadContent(event.detail);
         })
@@ -11,12 +12,22 @@ class DocSpace {
 
     loadContent(content) {
         this.render();        
-        fetch(`api/loadContent/${content.reference}`)
-            .then(response => response.text())
-            .then(data => {
-                this.content = data;
-                this.element.querySelector('.docspace-content').innerHTML = data;
-            });
+        if(content.type === 'html'){
+            if(this.displayType != 'html'){
+                this.content = new Widget(this.element.querySelector('.docspace-content'), '', [
+                    new ActionButton('Reload', 'refresh fa fa-refresh', 'refresh'),
+                    new ActionButton('Print', 'print fa fa-print', 'print')
+                ]); 
+                let viewer = new HtmlViewer(content.reference, this.content.contentElement);
+                this.content.addContentObject(viewer);
+                this.displayType = 'html';
+            }
+            else{
+                this.content.setContent('');
+                let viewer = new HtmlViewer(content.reference, this.content.contentElement);
+                this.content.addContentObject(viewer);
+            }
+        }
     }
 
     render() {

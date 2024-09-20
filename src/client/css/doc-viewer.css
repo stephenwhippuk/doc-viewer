@@ -78,3 +78,41 @@ footer {
     background-color: #d1d1d1;
     color: black;
 }
+
+.docspace-content .refresh {
+    cursor: pointer;
+    vertical-align: middle;
+    text-align: center;
+    margin-right:5px;
+    font-size: 1em;
+    color: blue
+}
+
+.docspace-content .print {
+    cursor: pointer;
+    vertical-align: middle;
+    text-align: center;
+
+    margin-right:5px;
+    font-size: 1em;
+    color: blue;
+}
+
+.docspace-content .header{
+    background-color: #0425b900;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 60px;
+}
+
+.docspace-content .widget-actions{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: flex-end;
+    height:100%;
+}
+
+.docspace-content .header h1{
+    margin: 0;
+    font-size: 1.2em;
+}
