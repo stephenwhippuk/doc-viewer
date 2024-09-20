@@ -1,0 +1,11 @@
+{
+  "name": "doc-viewer",
+  "version": "1.0.0",
+  "description": "vanilla js and css learning app",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Stephen Whipp",
+  "license": "ISC"
+}
