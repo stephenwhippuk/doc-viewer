@@ -6,6 +6,7 @@ class HtmlViewer{
         this.content = '';
         this.parentElement = parentElement;
         this.dataLoaded = false;
+        this.frameId = null;
         this.render();
         this.configureEventHandlers();
     }
@@ -21,7 +22,10 @@ class HtmlViewer{
     }
 
     print(){
-        window.print();
+        if(this.frameId){
+            let frame = document.getElementById(this.frameId);
+            frame.contentWindow.print();
+        }
     }
 
     changeUrl(url){
@@ -37,6 +41,13 @@ class HtmlViewer{
 
         // create iframe for our content
         let iframe = document.createElement('iframe');
+
+        // create a unique id for the frame 
+        do{
+            iframe.id = `iframe-${Math.floor(Math.random() * 1000)}`;
+        }while (document.getElementById(`iframe-${Math.floor(Math.random() * 1000)}`))
+
+        this.frameId = iframe.id;
 
         // assemble
         this.parentElement.appendChild(iframe);
