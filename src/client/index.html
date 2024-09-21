@@ -3,7 +3,11 @@
 <head>
     <title>Doc Viewer Mock</title>
     <link rel="stylesheet" type="text/css" href="css/doc-viewer.css">
+    <link rel="stylesheet" type="text/css" href="css/widget.css">
+    <link rel="stylesheet" type="text/css" href="css/docspace.css">
     <link rel="stylesheet" type="text/css" href="css/treeview.css">
+    <link rel="stylesheet" type="text/css" href="css/html-viewer.css">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
@@ -45,11 +49,11 @@
                 let mappedData = createTreeViewNodeFromData(data);
 
                 widgit = new Widget(parent, "Topics", [
-                    new ActionButton('Expand All', 'expand-all fa fa-chevron-circle-down', 'expand-all'), 
-                    new ActionButton('Collapse All', 'collapse-all fa fa-chevron-circle-up', 'collapse-all')
+                    new ActionButton('btn-expand-all','Expand All', 'expand-all fa fa-chevron-circle-down', 'expand-all'), 
+                    new ActionButton('btn-collapse-all','Collapse All', 'collapse-all fa fa-chevron-circle-up', 'collapse-all')
                 ]);
                 treeView = new TreeView("Topics", widgit.contentElement, mappedData, dispatcher);
-                widgit.addContentObject(treeView);
+                widgit.setContentObject(treeView);
                 
                 let docSpaceDiv = document.getElementById("doc-space1")
                 let docSpace = new DocSpace(docSpaceDiv);
