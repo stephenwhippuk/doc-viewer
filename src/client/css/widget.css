@@ -1,0 +1,19 @@
+.widget .header{
+    display:grid;
+    grid-template-columns: 1fr 60px;
+}
+.widget .widget-actions{
+    display: flex;
+    justify-content: flex-end;
+}
+.widget .header h1{
+    margin: 0;
+    font-size: 1.2em;
+}
+.widget .widget-action {
+    cursor: pointer;
+    vertical-align: middle;
+    text-align: center;
+    margin-right:5px;
+    font-size: 1em;
+}

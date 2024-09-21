@@ -68,6 +68,7 @@ class TreeView{
         this.renderNode(this.rootNode, this.element, 0);
     }
 
+    // NOTE: this is not restuctured because the structure is already good
     renderNode(node, parentElement, indent){
 
         let indentScale = this.element.getAttribute("data-indent") || 10;
@@ -88,7 +89,6 @@ class TreeView{
         }
         else{
             nodeElement.classList.add('content');
-            console.log(this.dispatcher);
             let self = this;
             nodeElement.addEventListener('click', () => {
                     self.dispatcher.dispatchEvent('content-selected', node.content);
