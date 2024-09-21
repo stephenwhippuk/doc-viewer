@@ -43,9 +43,11 @@ class HtmlViewer{
         let iframe = document.createElement('iframe');
 
         // create a unique id for the frame 
+        let randomeId = 0
         do{
-            iframe.id = `iframe-${Math.floor(Math.random() * 1000)}`;
-        }while (document.getElementById(`iframe-${Math.floor(Math.random() * 1000)}`))
+            randomeId = Math.floor(Math.random() * 1000);
+            iframe.id = `iframe-${randomeId}`;
+        }while (document.getElementById(`iframe-${randomeId}`));
 
         this.frameId = iframe.id;
 
