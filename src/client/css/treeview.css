@@ -26,42 +26,16 @@
     cursor:default;
 }
 
-
-.treeview .header{
-    width: 100%;
-    display: grid;
-    grid-template-columns: 1fr 60px;
-    border-bottom: 1px solid #444444;
-    padding: 5px 0;
-    margin-bottom: 10px;
-}
-
-.treeview .widget-actions{
-    display: flex;
-    justify-content: flex-end;
-}
-
-.treeview .header h1{
-    margin: 0;
-    font-size: 1.2em;
-}
-
-.treeview .expand-all{
-    cursor: pointer;
-    vertical-align: middle;
-    text-align: center;
-    font-weight: bold;
-    margin-right:5px;
-    font-size: 1.2em;
+.widget .expand-all{
     color: blue
 }
 
-.treeview .collapse-all{
-    cursor: pointer;
-    text-align: center;
-    vertical-align: middle;
-    margin-right:5px;
-    font-weight: bold;
-    font-size: 1.2em;
+.widget .collapse-all{
     color: blue;
+}
+
+.treeview.widget .header{
+    margin-bottom: 0.5em;
+    padding-bottom: 0.1em;
+    border-bottom: 1px solid #444444;
 }

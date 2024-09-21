@@ -8,31 +8,39 @@ class DocSpace {
         element.addEventListener('load-content', (event) => {
             this.loadContent(event.detail);
         })
+        this.render();
     }
 
-    loadContent(content) {
-        this.render();        
+    loadContent(content) {    
         if(content.type === 'html'){
             if(this.displayType != 'html'){
                 this.content = new Widget(this.element.querySelector('.docspace-content'), '', [
-                    new ActionButton('Reload', 'refresh fa fa-refresh', 'refresh'),
-                    new ActionButton('Print', 'print fa fa-print', 'print')
+                    new ActionButton('btn-html-refresh', 'Reload', 'refresh fa fa-refresh', 'refresh'),
+                    new ActionButton('btn-html-print','Print', 'print fa fa-print', 'print')
                 ]); 
                 let viewer = new HtmlViewer(content.reference, this.content.contentElement);
-                this.content.addContentObject(viewer);
+                this.content.setContentObject(viewer);
                 this.displayType = 'html';
             }
             else{
-                this.content.setContent('');
-                let viewer = new HtmlViewer(content.reference, this.content.contentElement);
-                this.content.addContentObject(viewer);
+                // we know that if we hit here the HTML viewer is already created,
+                // so we just need to change the URL its pointing to
+                this.content.callOnContentObject('changeUrl', content.reference);
             }
         }
     }
 
     render() {
+        // clear existing 
+        this.element.innerHTML = '';
+
+        // create elements
         let contentDiv = document.createElement('div');
-        contentDiv.classList.add('docspace-content');
+
+        // assemble
         this.element.appendChild(contentDiv);
+
+        // style
+        contentDiv.classList.add('docspace-content');
     }
 }
