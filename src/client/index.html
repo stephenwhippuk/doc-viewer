@@ -46,7 +46,7 @@
             .then(response => response.json())
             .then(data => {
                 console.log(data);
-                let mappedData = createTreeViewNodeFromData(data);
+                let mappedData = TreeView.createTreeViewNodeFromData(data);
 
                 widgit = new Widget(parent, "Topics", [
                     new ActionButton('btn-expand-all','Expand All', 'expand-all fa fa-chevron-circle-down', 'expand-all'), 
@@ -64,16 +64,7 @@
 
             });     
         }
-
-        // we'll make this reusable in a bit
-        function createTreeViewNodeFromData(data){
-            if(data.nodetype === 'topic'){
-                let children = data.children.map(createTreeViewNodeFromData);
-                return new Folder(data.name, children);
-            }else{
-                return new FolderContent(data.name, data.type, data.reference);
-            }
-        }
+       
 
     </script>
 </body>

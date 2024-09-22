@@ -142,4 +142,14 @@ class TreeView{
         this.rootNode.collapseAll();
         this.render();
     }
+
+    static createTreeViewNodeFromData(data){
+        if(data.nodetype === 'topic'){
+            let children = data.children.map(createTreeViewNodeFromData);
+            return new Folder(data.name, children);
+        }else{
+            return new FolderContent(data.name, data.type, data.reference);
+        }
+    }
+    
 }
