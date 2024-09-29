@@ -81,7 +81,7 @@ icon and caret are spans holding icons (currently from font awesome)
 
 ```
 
-setup event handling
+### setup event handling
 ```html
     ...
 

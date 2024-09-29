@@ -45,7 +45,6 @@
             fetch('api/topics')
             .then(response => response.json())
             .then(data => {
-                console.log(data);
                 let mappedData = TreeView.createTreeViewNodeFromData(data);
 
                 widgit = new Widget(parent, "Topics", [

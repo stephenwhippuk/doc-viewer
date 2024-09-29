@@ -1,3 +1,5 @@
+
+
 class EventDispatcher {
     constructor() {
         this.registry = {};
@@ -26,5 +28,14 @@ class EventDispatcher {
             });
         }
     }
+    static dispatchEventToTargetAndDescendents(target, eventName, detail)
+    {
+        let elementList = target.querySelectorAll('*');
+        target.dispatchEvent(new CustomEvent(eventName, { detail }));
+        elementList.forEach(element => {
+            element.dispatchEvent(new CustomEvent(eventName, { detail }));
+        });
+    }
+
 
 }

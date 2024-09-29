@@ -145,7 +145,7 @@ class TreeView{
 
     static createTreeViewNodeFromData(data){
         if(data.nodetype === 'topic'){
-            let children = data.children.map(createTreeViewNodeFromData);
+            let children = data.children.map(TreeView.createTreeViewNodeFromData);
             return new Folder(data.name, children);
         }else{
             return new FolderContent(data.name, data.type, data.reference);

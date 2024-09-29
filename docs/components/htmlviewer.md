@@ -4,7 +4,7 @@ The HTML Viewer is a wrapper around an IFrame to display  HTML Content. It will 
 
 ## Specification
 
-## Methods
+### Methods
 
 **constructor** (url : *string*, parentElement : *HTMLElement*) -> sets up the Viewer properties, renders it and sets up event handling
 
@@ -22,23 +22,25 @@ The HTML Viewer is a wrapper around an IFrame to display  HTML Content. It will 
 
 **setContent** (content : *string*) -> sets the HTML content of the IFrame
 
-## Emits
+### Emits
 
 none 
 
-## Consumes 
+### Consumes 
 
 **refresh** -> cuases refresh to be called
 
 **print** -> causes print to be called
 
-## structure
+**change-url** -> causes changeUrl to be called
+
+### structure
 ```
 parent
     iFrame
 ```
 
-## Classes
+### Classes
  **.html-viewer** -> the class of the iframe
 
 ## RoadMap
@@ -46,8 +48,7 @@ parent
 
 ## Examples of Use
 
-
-Creating a Viewer
+### Creating a Viewer
 ```html
     <div id="contentViewer">
 
@@ -61,7 +62,7 @@ Creating a Viewer
 
 ```
 
-modifying the existing viewer to a new page
+### modifying the existing viewer to a new page
 
 ```html
     <script>
@@ -71,4 +72,34 @@ modifying the existing viewer to a new page
         ...
         let newUrl = 'myFile2.html'
         viewer.changeUrl(newUrl);
+```
+
+### Printing the Document
+
+although this can be done directly by calling the method, this is normally this would be done through the passing of a CustomEvent as follows
+
+```html
+    <script>
+        let contentDiv = document.getElementById('#contentViewer')
+        let viewer = new HtmlViewer('myFile.html', contentDiv)
+        
+        ...
+        
+        contentDiv.dispatchEvent('print');
+
+```
+
+### Reload the Document
+
+although this can be done directly by calling the method, this is normally this would be done through the passing of a CustomEvent as follows
+
+```html
+    <script>
+        let contentDiv = document.getElementById('#contentViewer')
+        let viewer = new HtmlViewer('myFile.html', contentDiv)
+        
+        ...
+        
+        contentDiv.dispatchEvent('refresh');
+
 ```

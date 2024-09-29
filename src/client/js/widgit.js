@@ -14,22 +14,13 @@ class Widget {
     constructor(element, title, actionButtons) {
         this.element = element;
         this.contentElement = null;
-        this.content = null;
         this.name = title;
         this.actionButtons = actionButtons;
         this.render();
     }
 
-    setContentObject(content) {
-        this.content = content;
-    }
-
     setContent(content) {
         this.contentElement.innerHTML = content;
-    }
-
-    callOnContentObject(func, args){
-        this.content[func](args);
     }
 
     render(){
