@@ -19,13 +19,15 @@ class DocSpace {
                     new ActionButton('btn-html-print','Print', 'print fa fa-print', 'print')
                 ]); 
                 let viewer = new HtmlViewer(content.reference, this.content.contentElement);
-                this.content.setContentObject(viewer);
                 this.displayType = 'html';
             }
             else{
                 // we know that if we hit here the HTML viewer is already created,
                 // so we just need to change the URL its pointing to
-                this.content.callOnContentObject('changeUrl', content.reference);
+                let ele = this.element.querySelector('.docspace-content')
+                // to avoid having to use internal details such as the class name of the html viewer
+                // we use the multicast function of the event dispatcher
+                EventDispatcher.dispatchEventToTargetAndDescendents(ele, 'change-url', content.reference);
             }
         }
     }

@@ -14,6 +14,7 @@ class HtmlViewer{
     configureEventHandlers(){
         this.parentElement.addEventListener('refresh', () => this.refresh())
         this.parentElement.addEventListener('print', () => this.print())
+        this.parentElement.addEventListener('change-url', (event) => this.changeUrl(event.detail))
     }
 
     refresh(){

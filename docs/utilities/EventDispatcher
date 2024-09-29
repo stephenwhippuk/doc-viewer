@@ -1,0 +1,45 @@
+# Event Dispatcher Helper
+
+Event Dispatcher wraps around the inbuild vanialla Customer Messaging to allow for components to 
+communicate in a decoupled fashion. This is achieved by configuration code that ties an event name to 
+a particular target, preventing the need for the Producer to know the Target as is needed for normal HTML Custom events. It also allows remapping of event names so that components can be used in a more generic fashion. 
+
+## Specification
+
+### Methods
+
+**registerEvent** (eventName : *string*, element : *HtmlElement*, mapping: \[Optional\] (evt : *CustomEvent*) => *CustomEvent*) ->  registers a specific event name with a target element, optionhally mapping the Event to an Event of a different Name but same details. 
+
+**dispatchEvent** (evt : *CustomEvent*) -> dispatches the event to the correct target
+
+**dispatchEventToTargetAndDescendents** (target : *HtmlElement*, eventName : *string", detail : *object* ) -> STATIC method that will messaage the target element and all children of that element. This multicast messaging is provided to cover the case where a dispatch registry couldn;t be provide without violating encapsulation. Primarilly where the target(s) are buried within a container such as Widget
+
+## Examples of Use
+
+### creating a registration
+
+```HTML
+    <div id="doc-space1"> ... </div>
+
+    <script>
+        ...
+        let dispatcher = new EventDispatcher();
+        ...
+        let docSpaceDiv = document.getElementById("doc-space1")
+        dispatcher.registerEvent('content-selected', docSpaceDiv, (eventName, detail)=>{
+                    return ['load-content', detail];
+                });
+        ...
+```
+
+### dispatching An Event
+
+```JS
+    eventDispatcher.dispatchEvent('content-selected', {content: "<url>"})
+```
+
+### dispatching a multicast event
+
+```JS
+    EventDispatcher.dispatchEventToTargetAndDescendents(widget, 'change-content', {content: `<url>`})
+```
